@@ -39,6 +39,7 @@ for nurse, days in requests.items():
     for day, duty in days.items():
         schedule.at[nurse, day] = duty
 
+
 # 간호사별 W 횟수를 기록하기 위한 딕셔너리 (제한 초과 방지)
 max_w_days = {nurse: 14 if nurse in {"Q", "R", "S", "T"} else 8 for nurse in nurses}
 current_w_days = {nurse: sum(1 for v in schedule.loc[nurse] if v == "W") for nurse in nurses}
@@ -91,4 +92,4 @@ for day in range(1, num_days + 1):
 # 재조정된 스케줄 출력
 # import ace_tools as tools
 # tools.display_dataframe_to_user(name="재조정된 2월 간호사 근무표", dataframe=schedule)
-print(schedule)
+# print(schedule)
